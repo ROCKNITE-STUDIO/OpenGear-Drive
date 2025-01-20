@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenGear Drive</title>
   <style>
-    /* Style global */
+    /* Thème sombre/clair */
     :root {
-      --background-light: #f0f0f0;
-      --text-light: #333;
-      --background-dark: #1a1a1a;
-      --text-dark: #f0f0f0;
+      --background-light: #f9f9f9;
+      --text-light: #222;
+      --background-dark: #121212;
+      --text-dark: #f1f1f1;
     }
 
     [data-theme="light"] {
@@ -32,9 +32,9 @@
     }
 
     header {
-      padding: 10px 20px;
       background-color: var(--text);
       color: var(--background);
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -43,61 +43,117 @@
     header a {
       color: var(--background);
       text-decoration: none;
+      margin: 0 10px;
       font-weight: bold;
-      margin-right: 10px;
     }
 
     header a:hover {
       text-decoration: underline;
     }
 
-    h1 {
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    p {
-      text-align: center;
-      font-size: 1.2em;
-    }
-
     .theme-toggle {
       cursor: pointer;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 5px;
       background-color: var(--background);
       color: var(--text);
+      border: 2px solid var(--text);
+      padding: 5px 10px;
+      border-radius: 5px;
       font-weight: bold;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     .theme-toggle:hover {
       background-color: var(--text);
       color: var(--background);
     }
+
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px;
+      cursor: pointer;
+      border: 2px solid var(--text);
+      border-radius: 5px;
+      transition: transform 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    a {
+      color: var(--text);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body data-theme="light">
   <header>
-    <div>
-      <a href="#home">Accueil</a>
-      <a href="#features">Fonctionnalités</a>
-      <a href="#download">Téléchargements</a>
-    </div>
+    <nav>
+      <a href="#about">À propos</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#guide">Guide rapide</a>
+      <a href="#downloads">Téléchargements</a>
+    </nav>
     <button class="theme-toggle" onclick="toggleTheme()">Changer de thème</button>
   </header>
   <main>
     <h1>OpenGear Drive</h1>
-    <p>Le projet open source pour les passionnés de simulation de conduite.</p>
+    <p>Le projet open source pour les passionnés de conduite.</p>
+
+    <section id="about">
+      <h2>À propos</h2>
+      <p>OpenGear Drive est une solution open source pour ceux qui souhaitent construire un volant, des pédales et une boîte de vitesse personnalisés. Accessible, modulable et économique, ce projet s’adresse aux amateurs de bricolage et de simulation de conduite.</p>
+    </section>
+
+    <section id="gallery">
+      <h2>Galerie</h2>
+      <div class="gallery">
+        <a href="details_volant.html"><img src="volant.jpg" alt="Volant OpenGear Drive"></a>
+        <a href="details_pedales.html"><img src="pedales.jpg" alt="Pédales OpenGear Drive"></a>
+        <a href="details_boite.html"><img src="boite_vitesse.jpg" alt="Boîte de vitesse OpenGear Drive"></a>
+      </div>
+    </section>
+
+    <section id="guide">
+      <h2>Guide rapide</h2>
+      <ol>
+        <li>Connectez le volant, les pédales et la boîte de vitesse via USB ou Bluetooth.</li>
+        <li>Téléchargez et installez le logiciel OpenGear Drive sur votre PC.</li>
+        <li>Configurez vos périphériques dans le logiciel et commencez à jouer !</li>
+      </ol>
+    </section>
+
+    <section id="downloads">
+      <h2>Téléchargements</h2>
+      <ul>
+        <li><a href="logiciel_pc.zip">Télécharger le logiciel PC</a></li>
+        <li><a href="code_arduino.zip">Télécharger le code Arduino</a></li>
+        <li><a href="code_esp32.zip">Télécharger le code ESP32</a></li>
+      </ul>
+    </section>
   </main>
   <script>
-    // Thème clair/sombre
     function toggleTheme() {
       const body = document.body;
       const currentTheme = body.getAttribute("data-theme");
-      const newTheme = currentTheme === "light" ? "dark" : "light";
-      body.setAttribute("data-theme", newTheme);
+      body.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
     }
   </script>
 </body>
